@@ -1,5 +1,6 @@
 // compile with
 // g++ -std=c++11 -pthread file_name.cpp
+// blah
 
 #include <iostream>
 #include <thread>
