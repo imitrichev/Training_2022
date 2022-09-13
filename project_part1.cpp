@@ -52,5 +52,5 @@ int main()
 	int N=10;
 	int n=testAll(N);
 	std::cout << "Tests: "<<N-n<<" PASSED, "<<n<<" FAILED."<<std::endl; 
-	return 0;
+	return n;
 }
