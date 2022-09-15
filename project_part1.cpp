@@ -1,10 +1,11 @@
 #include <vector>
 #include <thread>
+#include <atomic>
 #include <iostream>
 
 class Wallet
 {
-    int mMoney;
+    std::atomic<int> mMoney;
 public:
     Wallet() :mMoney(0){}
     int getMoney() { return mMoney; }
