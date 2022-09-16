@@ -41,7 +41,7 @@ int testAll(int NUM_TESTS)
   {
 	 if((val = testMultithreadedWallet(k)) != k*10000)
      {
-       std::cout << "Test = "<<k<<" FAILED. Money in Wallet = "<<val << std::endl;
+       std::cout << "Test = "<< k <<" FAILED. Money in Wallet = "<< val << std::endl;
 	   failed_tests++;
      }
   }
@@ -52,6 +52,6 @@ int main()
 {
 	int N=10;
 	int n=testAll(N);
-	std::cout << "Tests: "<<N-n<<" PASSED, "<<n<<" FAILED."<<std::endl; 
+	std::cout << "Tests: "<< N-n <<" PASSED, "<< n <<" FAILED."<< std::endl; 
 	return n;
 }
