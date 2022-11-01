@@ -56,3 +56,5 @@ int main()
 	cout << "Tests: "<<N-n<<" PASSED, "<<n<<" FAILED."<<endl; 
 	return n;
 }
+
+Изменение в одном из файлов
