@@ -1,7 +1,4 @@
-#include <vector>
-#include <thread>
-#include <atomic>
-#include <iostream>
+
 using namespace std;
 
 class Wallet
