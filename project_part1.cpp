@@ -2,10 +2,11 @@
 #include <thread>
 #include <atomic>
 #include <iostream>
+using namespace std;
 
 class Wallet
 {
-    std::atomic<int> mMoney;
+    atomic<int> mMoney;
 public:
     Wallet() :mMoney(0){}
     int getMoney() { return mMoney; }
@@ -21,9 +22,9 @@ public:
 int testMultithreadedWallet(int N)
 {
    Wallet walletObject;
-   std::vector<std::thread> threads;
+   vector<thread> threads;
    for(int i = 0; i < N; ++i){
-threads.push_back(std::thread(&Wallet::addMoney, &walletObject, 10000));
+threads.push_back(thread(&Wallet::addMoney, &walletObject, 10000));
    }
 
    for(int i = 0; i < threads.size() ; i++)
@@ -41,7 +42,7 @@ int testAll(int NUM_TESTS)
   {
 	 if((val = testMultithreadedWallet(k)) != k*10000)
      {
-       std::cout << "Test = "<<k<<" FAILED. Money in Wallet = "<<val << std::endl;
+       cout << "Test = "<<k<<" FAILED. Money in Wallet = "<<val << endl;
 	   failed_tests++;
      }
   }
@@ -52,6 +53,6 @@ int main()
 {
 	int N=10;
 	int n=testAll(N);
-	std::cout << "Tests: "<<N-n<<" PASSED, "<<n<<" FAILED."<<std::endl; 
+	cout << "Tests: "<<N-n<<" PASSED, "<<n<<" FAILED."<<endl; 
 	return n;
 }
