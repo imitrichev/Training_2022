@@ -21,3 +21,31 @@ jobs:
       run: |
         chmod +x project_part1
         ./project_part1
+        
+    - name: Calculate Code Coverage
+      id: covr
+      run: |
+        sudo apt install -y googletest libgtest-dev build-essential gcovr
+        g++ --coverage -g -O0 -fprofile-arcs -ftest-coverage -I/usr/include/gtest -L/usr/lib/x86_64-linux-gnu test_fun.cpp -lgtest
+        ./a.out
+        gcovr --cobertura coverage.cobertura.xml
+
+    - name: Code Coverage Report
+      uses: irongut/CodeCoverageSummary@v1.3.0
+      with:
+        filename: coverage.cobertura.xml
+        badge: true
+        fail_below_min: true
+        format: markdown
+        hide_branch_rate: false
+        hide_complexity: true
+        indicators: true
+        output: both
+        thresholds: '60 80'
+
+    - name: Add Coverage PR Comment
+      uses: marocchino/sticky-pull-request-comment@v2
+      if: github.event_name == 'pull_request'
+      with:
+        recreate: true
+        path: code-coverage-results.md
