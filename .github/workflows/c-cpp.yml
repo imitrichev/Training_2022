@@ -50,3 +50,19 @@ jobs:
       with:
         recreate: true
         path: code-coverage-results.md
+    
+    - name: Get the coverage
+      id: get_coverage
+      run: |
+      covvalue="$(grep 'Summary:' code-coverage-results.md | awk '{print $5}')"
+      echo "COVERAGE=$covvalue">> $GITHUB_ENV
+    
+    - name: Create the Badge
+      uses: schneegans/dynamic-badges-action@v1.0.0
+      with:
+        auth: ${{ secrets.GIST_SECRET }}
+        gistID: 25038fb53c9796ef9018d44ca597f1fd
+        filename: Training_2022_main.json
+        label: Test Coverage
+        message: ${{ env.COVERAGE }}
+        color: green
