@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -21,34 +21,3 @@ jobs:
       run: |
         chmod +x project_part1
         ./project_part1
-        
-    - name: Setup OpenCppCoverage and add to PATH
-      id: setup_opencppcoverage
-      run: |
-        choco install OpenCppCoverage -y
-        echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
-        
-    - name: Generate Report
-      id: generate_test_report
-      shell: cmd
-      run: OpenCppCoverage.exe --sources project_part1.cpp --export_type cobertura:coverage.cobertura.xml -- project_part1
-
-    - name: Code Coverage Summary
-      uses: irongut/CodeCoverageSummary@v1.3.0
-      with:
-        filename: coverage.cobertura.xml
-        badge: true
-        fail_below_min: true
-        format: markdown
-        hide_branch_rate: false
-        hide_complexity: true
-        indicators: true
-        output: both
-        thresholds: '50 80'
-
-    - name: Add Coverage PR Comment
-      uses: marocchino/sticky-pull-request-comment@v2
-      if: github.event_name == 'pull_request'
-      with:
-        recreate: true
-        path: code-coverage-results.md
