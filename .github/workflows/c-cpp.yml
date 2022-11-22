@@ -54,8 +54,9 @@ jobs:
     - name: Get the coverage
       id: get_coverage
       run: |
+        cat code-coverage-results.md
         COVVALUE="$(grep 'Summary:' code-coverage-results.md | awk '{print $5}')"
-        echo "COVERAGE=$covvalue">> $GITHUB_ENV
+        echo "COVERAGE=$COVVALUE">> $GITHUB_ENV
     
     - name: Create the Badge
       uses: schneegans/dynamic-badges-action@v1.0.0
