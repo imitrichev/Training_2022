@@ -26,7 +26,8 @@ jobs:
       id: covr
       run: |
         sudo apt install -y googletest libgtest-dev build-essential gcovr
-        g++ --coverage -g -O0 -fprofile-arcs -ftest-coverage -I/usr/include/gtest -L/usr/lib/x86_64-linux-gnu test_fun.cpp -lgtest
+        g++ --coverage -g -O0 -fprofile-arcs -ftest-coverage -I/usr/include/gtest -L/usr/lib/x86_64-linux-gnu test_fun.cpp -lgtest -lpthread
+        chmod +x ./a.out
         ./a.out
         gcovr --cobertura coverage.cobertura.xml
 
