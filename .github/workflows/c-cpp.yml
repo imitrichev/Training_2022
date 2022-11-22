@@ -55,7 +55,7 @@ jobs:
       id: get_coverage
       run: |
         cat code-coverage-results.md
-        COVVALUE="$(grep 'Summary:' code-coverage-results.md | awk '{print $5}')"
+        COVVALUE="$(grep 'Summary' code-coverage-results.md | awk '{print $3}')"
         echo "COVERAGE=$COVVALUE">> $GITHUB_ENV
     
     - name: Create the Badge
