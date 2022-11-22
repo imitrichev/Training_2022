@@ -1,4 +1,9 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-//TODO
+
+int main() {
+	cout << "Hi, I'm Natasha/n!';
+	
+	return 0
+}
