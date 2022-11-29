@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'cpp_gtest_gcovr2' } }
+    agent any
     stages {
         stage('build') {
             steps {
