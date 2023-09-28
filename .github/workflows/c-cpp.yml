@@ -14,8 +14,8 @@ jobs:
         os: [ubuntu-latest,macos-latest]
     steps:
     - uses: actions/checkout@v4
-      with:
-        ref: 'dev' # checkout the dev branch
+      #with:
+      #  ref: 'dev' # checkout the dev branch
     - name: make
       run: make
       
